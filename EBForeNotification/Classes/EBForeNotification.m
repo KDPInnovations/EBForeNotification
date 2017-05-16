@@ -80,11 +80,20 @@ NSString *EBBannerViewTimeText = @"now";    //默认弹窗时间 default banner 
 
 +(UIViewController *)appRootViewController{
     UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIWindow *appRootWindow=[UIApplication sharedApplication].windows[0];
+    //UIWindow *keyWindow=[UIApplication sharedApplication].keyWindow;
+    if (appRootVC){
     UIViewController *topVC = appRootVC;
     while (topVC.presentedViewController) {
         topVC = topVC.presentedViewController;
     }
-    return topVC;
-}
+        return topVC;
+        ;}
+    else{
+        
+        UIViewController *topVC=appRootWindow.rootViewController;
+        return topVC;
+    }
+   }
 
 @end
